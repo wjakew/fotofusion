@@ -148,7 +148,7 @@ public class Photo {
             Matcher matcher = pattern.matcher(tag.getDescription());
             if ( matcher.find()){
                 String date = tag.getDescription().split(" ")[0];
-                date = date.replaceAll(":","-");
+                date = date.replaceAll(":",FotoFusionApplication.dateDivider);
 
                 date = date.replaceAll(" ","");
                 rootPath = rootPath + "/" + date;

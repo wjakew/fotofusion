@@ -5,7 +5,10 @@
  */
 package com.jakubwawak.maintanance;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -33,6 +36,29 @@ public class FotoFusionLog {
         logCollection.add(logElement);
         if ( showLogFlag ){
             System.out.println(ConsoleColors.GREEN_BOLD_BRIGHT+logElement+ConsoleColors.RESET);
+        }
+    }
+
+    /**
+     * Function for generating log file name
+     * @return String
+     */
+     String generateLogFileName() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        return "log_" + now.format(formatter) + ".log";
+    }
+
+    /**
+     * Function for saving log to file
+     */
+    public void saveLogToFile() {
+        try (PrintWriter writer = new PrintWriter(generateLogFileName())) {
+            for (String logEntry : logCollection) {
+                writer.println(logEntry);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the log file: " + e.getMessage());
         }
     }
 }

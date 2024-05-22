@@ -21,7 +21,7 @@ public class Engine {
 
     public PhotoCollection collection;
 
-    ArrayList<String> folderNameTree;
+    public ArrayList<String> folderNameTree;
 
     /**
      * Constructor
@@ -81,6 +81,9 @@ public class Engine {
         collection.loadPhotoCollectionExifParser();
     }
 
+    /**
+     * Function for listing available branches (tags from photos)
+     */
     public void listBranches(){
         System.out.println("\033[0;35m"+"Listing tags: ("+collection.getCommonTags().size()+")");
         int index = 1;
@@ -89,6 +92,18 @@ public class Engine {
             index++;
         }
         System.out.print("\033[0m");
+    }
+
+    /**
+     * Function for listing folder name tree
+     * @return
+     */
+    public String listFolderNameTree(){
+        String data = "";
+        for(String folder : folderNameTree){
+            data = data + folder + ",";
+        }
+        return data;
     }
 
     /**

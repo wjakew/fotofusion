@@ -5,8 +5,11 @@
  */
 package com.jakubwawak;
 
+import com.jakubwawak.fotofusionengine.Engine;
+import com.jakubwawak.fotofusionengine.terminalmenu.FotoFusionMenu;
 import com.jakubwawak.maintanance.ConsoleColors;
 import com.jakubwawak.maintanance.FotoFusionLog;
+import com.jakubwawak.maintanance.Properties;
 
 /**
  * Application for creating a backup copy of photo library based on photo EXIF data
@@ -16,21 +19,45 @@ public class FotoFusionApplication {
     public static String version = "v1.0.0";
     public static String build = "ff220524JWA2";
     public static FotoFusionLog log = new FotoFusionLog(true);;
-    public static String[] photoExtensions = {"jpg", "png", "jpeg", "gif", "bmp"};
+    public static String[] photoExtensions = {};
+    public static String dateDivider = "";
 
-    public static boolean debugFlag = true;
+    public static Engine engine = new Engine();
+    public static boolean debugFlag = false;
+    public static Properties properties;
+
     /**
      * Main method of the application
      * @param args
      */
     public static void main(String[] args) {
         show_info();
-        if ( debugFlag ){
-            FotoFusionTest test = new FotoFusionTest();
-            test.run();
+        // load properties
+        properties = new Properties("fotofusion.properties");
+        if (properties.fileExists){
+            properties.parsePropertiesFile();
         }
         else{
-            //TODO run application normally
+            properties.createPropertiesFile();
+            properties.parsePropertiesFile();
+        }
+        photoExtensions = properties.getValue("accepted_file_types").split(",");
+        dateDivider = properties.getValue("date_format_divider");
+        log.add("Loaded properites file, date divider set to ["+dateDivider+"]6, accepted file types: "+properties.getValue("accepted_file_types"));
+        if ( args.length == 0 ){
+            if ( debugFlag ){
+                // run test
+                FotoFusionTest test = new FotoFusionTest();
+                test.run();
+            }
+            else{
+                // load menu
+                FotoFusionMenu ffm = new FotoFusionMenu();
+                ffm.run();
+            }
+        }
+        else{
+            // TODO run with arguments
         }
     }
 
