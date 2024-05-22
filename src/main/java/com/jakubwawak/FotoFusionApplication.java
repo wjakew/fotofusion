@@ -14,7 +14,7 @@ import com.jakubwawak.maintanance.FotoFusionLog;
 public class FotoFusionApplication {
 
     public static String version = "v1.0.0";
-    public static String build = "ff220524JWA";
+    public static String build = "ff220524JWA2";
     public static FotoFusionLog log = new FotoFusionLog(true);;
     public static String[] photoExtensions = {"jpg", "png", "jpeg", "gif", "bmp"};
 

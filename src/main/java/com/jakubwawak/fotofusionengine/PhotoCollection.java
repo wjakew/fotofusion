@@ -5,10 +5,11 @@
  */
 package com.jakubwawak.fotofusionengine;
 
+import com.drew.metadata.Tag;
 import com.jakubwawak.FotoFusionApplication;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Class for storing photo collection, based on EXIF data and given path
@@ -71,7 +72,25 @@ public class PhotoCollection {
      * Function for parse EXIF data from collection
      */
     public void loadPhotoCollectionExifParser(){
+        for(Photo photo : collection){
+            photo.parseExifData();
+        }
+    }
 
+    /**
+     * Function for getting all common tags from the photo collection
+     * @return ArrayList<Tag>
+     */
+    public ArrayList<String> getCommonTags() {
+        HashSet<String> allTags = new HashSet<>();
+
+        for (Photo photo : collection) {
+            for (Tag tag : photo.tags) {
+                allTags.add(tag.getTagName());
+            }
+        }
+        FotoFusionApplication.log.add("Loaded "+allTags.size()+" tags from photo collection");
+        return new ArrayList<>(allTags);
     }
 
 
