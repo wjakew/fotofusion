@@ -8,6 +8,10 @@ package com.jakubwawak.fotofusionengine.terminalmenu;
 import com.jakubwawak.fotofusionengine.Engine;
 import com.jakubwawak.maintanance.ConsoleColors;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * Object for showing current Engine object information
  */
@@ -56,5 +60,19 @@ public class EngineStatsTComponent {
         }
         System.out.println("-----------------------------------------");
         System.out.print(ConsoleColors.RESET);
+    }
+
+    /**
+     * Function for showing the help
+     */
+    public void showHelp() {
+        String helpFilePath = "./CONSOLE.md"; // Replace with the actual path to CONSOLE.md
+
+        try {
+            String helpInfo = new String(Files.readAllBytes(Paths.get(helpFilePath)));
+            System.out.println(helpInfo);
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the help file: " + e.getMessage());
+        }
     }
 }

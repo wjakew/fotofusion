@@ -8,6 +8,7 @@ package com.jakubwawak.fotofusionengine.terminalmenu;
 import com.jakubwawak.FotoFusionApplication;
 import com.jakubwawak.fotofusionengine.Engine;
 import com.jakubwawak.maintanance.ConsoleColors;
+import com.jakubwawak.maintanance.FotoFusionPreset;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -108,6 +109,9 @@ public class FotoFusionMenu {
                     System.out.println("Aborting the operation");
                 }
             }
+            else if (keyWords.contains("help")){
+                estc.showHelp();
+            }
             else if (keyWords.contains("showstats")){
                 estc.show(FotoFusionApplication.engine);
             }
@@ -123,6 +127,16 @@ public class FotoFusionMenu {
             else if (keyWords.contains("showhistory")){
                 for(String line : commandHistory){
                     System.out.println(line);
+                }
+            }
+            else if (keyWords.contains("save")){
+                if ( keyWords.size() == 2){
+                    FotoFusionPreset preset = new FotoFusionPreset(words[1]);
+                    preset.createPropertiesFile(FotoFusionApplication.engine);
+                }
+                else{
+                    System.out.println("Wrong number of arguments");
+
                 }
             }
             else{

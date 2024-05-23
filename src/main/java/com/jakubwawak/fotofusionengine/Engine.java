@@ -7,9 +7,11 @@ package com.jakubwawak.fotofusionengine;
 
 import com.drew.metadata.Tag;
 import com.jakubwawak.FotoFusionApplication;
+import com.jakubwawak.maintanance.FotoFusionPreset;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Class for running engine data
@@ -32,6 +34,19 @@ public class Engine {
     }
 
     /**
+     * Constructor with preset object
+     * @param preset
+     */
+    public Engine(FotoFusionPreset preset){
+        this.sourcePath = "";
+        folderNameTree = (ArrayList) Arrays.asList(preset.getValue("folderTreeName").split(","));
+        setSourcePath(preset.getValue("source_path"));
+        setDestinationPath(preset.getValue("destination_path"));
+        runCollectionGeneration();
+        runPhotoExifLoader();
+    }
+
+    /**
      * Function for setting path
      * @param path
      */
@@ -48,6 +63,16 @@ public class Engine {
         }
     }
 
+    /**
+     * Function for checking if source and destination path are empty
+     * @return boolean
+     */
+    public boolean checkIfEmpty(){
+        if (sourcePath.isEmpty() || destinationPath.isEmpty()){
+            return true;
+        }
+        return false;
+    }
     /**
      * Function for setting source path
      * @param path

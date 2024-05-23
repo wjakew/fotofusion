@@ -9,6 +9,8 @@
     Clears the current source, destination, and photo collection.
 - `showhistory`<br>
     Shows the history of the commands typed in the console.
+- `help`<br>
+    Shows the available commands in the console.
 ### Commands for setting the engine
 - `setsource <source>`<br>
     Sets the source of the engine. The source can be a file or a directory.
@@ -28,6 +30,8 @@
     Runs the copy engine for the current photo collection.
 - `showstats`<br>
     Shows the statistics of the current photo collection.
+- `save <filename>`<br>
+    Saves the current engine configuration in the working directory.
 ## Example Usage
 <br>1.`setsource /home/user/photos`<br>
     Sets the source of the engine to `/home/user/photos`.

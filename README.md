@@ -4,6 +4,14 @@
 
 FotoFusion is a Java-based application designed to manage and manipulate photo collections. It provides functionalities such as setting source and destination paths, generating collections, loading photo EXIF data, adding and removing tag branches, and copying photos.
 
+<<<<<<< Updated upstream
+=======
+## Changes:
+ff230524JWA
+1. Added `help` command to show available commands in the console.
+2. Added saving the engine configuration to a file using the `save` command.
+3. Added running the app from the arguments (check terminal guide section)
+>>>>>>> Stashed changes
 
 ## Features
 
@@ -25,8 +33,27 @@ To run the jar file, you can use the following command:
 ```bash
 java -jar FotoFusion.jar
 ```
+or
+```bash
+./fotofusion
+```
+
+## Terminal usage guide
+
+Application accepts running from terminal using the saved preset. To run auto copy from the terminal first 
+create a preset using `save <filename>` command in the console. Then run the following command in the terminal:
+
+```bash
+java -jar FotoFusion.jar <filename>
+```
+or
+```bash
+./fotofusion <filename>
+```
+
 ## Console UI Guide
 ## Available Commands
+
 ### Commands for setting up the program
 - `exit`<br>
   Exits the console and the program. Program saves the current log in the working directory.
@@ -36,6 +63,8 @@ java -jar FotoFusion.jar
   Clears the current source, destination, and photo collection.
 - `showhistory`<br>
   Shows the history of the commands typed in the console.
+- `help`<br>
+  Shows the available commands in the console.
 ### Commands for setting the engine
 - `setsource <source>`<br>
   Sets the source of the engine. The source can be a file or a directory.
@@ -55,6 +84,9 @@ java -jar FotoFusion.jar
   Runs the copy engine for the current photo collection.
 - `showstats`<br>
   Shows the statistics of the current photo collection.
+- `save <filename>`<br>
+  Saves the current engine configuration in the working directory.
+
 ## Example Usage
 <br>1.`setsource /home/user/photos`<br>
 Sets the source of the engine to `/home/user/photos`.

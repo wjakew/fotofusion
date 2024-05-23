@@ -16,8 +16,8 @@ import com.jakubwawak.maintanance.Properties;
  */
 public class FotoFusionApplication {
 
-    public static String version = "v1.0.0";
-    public static String build = "ff220524JWA2";
+    public static String version = "v1.1.0";
+    public static String build = "ff230524JWA";
     public static FotoFusionLog log = new FotoFusionLog(true);;
     public static String[] photoExtensions = {};
     public static String dateDivider = "";
@@ -58,6 +58,7 @@ public class FotoFusionApplication {
         }
         else{
             // TODO run with arguments
+
         }
     }
 
