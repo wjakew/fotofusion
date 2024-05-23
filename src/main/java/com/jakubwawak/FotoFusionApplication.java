@@ -9,7 +9,11 @@ import com.jakubwawak.fotofusionengine.Engine;
 import com.jakubwawak.fotofusionengine.terminalmenu.FotoFusionMenu;
 import com.jakubwawak.maintanance.ConsoleColors;
 import com.jakubwawak.maintanance.FotoFusionLog;
+import com.jakubwawak.maintanance.FotoFusionPreset;
 import com.jakubwawak.maintanance.Properties;
+
+import java.io.File;
+import java.util.Scanner;
 
 /**
  * Application for creating a backup copy of photo library based on photo EXIF data
@@ -57,8 +61,22 @@ public class FotoFusionApplication {
             }
         }
         else{
-            // TODO run with arguments
-
+            if ( args.length == 1){
+                String pathToPreset = args[0];
+                File file = new File(pathToPreset);
+                if (file.exists()){
+                    FotoFusionPreset ffp = new FotoFusionPreset(pathToPreset);
+                    ffp.parsePropertiesFile();
+                    engine = new Engine(ffp);
+                    Scanner sc = new Scanner(System.in);
+                    engine.runDummyPhotoCopy();
+                    System.out.print("type 'run' to start the engine: ");
+                    String ans = sc.nextLine();
+                    if ( ans.equals("run")){
+                        engine.runPhotoCopy();
+                    }
+                }
+            }
         }
     }
 

@@ -4,14 +4,12 @@
 
 FotoFusion is a Java-based application designed to manage and manipulate photo collections. It provides functionalities such as setting source and destination paths, generating collections, loading photo EXIF data, adding and removing tag branches, and copying photos.
 
-<<<<<<< Updated upstream
 =======
 ## Changes:
 ff230524JWA
 1. Added `help` command to show available commands in the console.
 2. Added saving the engine configuration to a file using the `save` command.
 3. Added running the app from the arguments (check terminal guide section)
->>>>>>> Stashed changes
 
 ## Features
 
