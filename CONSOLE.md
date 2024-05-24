@@ -11,6 +11,8 @@
     Shows the history of the commands typed in the console.
 - `help`<br>
     Shows the available commands in the console.
+- `gui`<br>
+    Starts GUI.
 ### Commands for setting the engine
 - `setsource <source>`<br>
     Sets the source of the engine. The source can be a file or a directory.

@@ -121,8 +121,8 @@ public class FotoFusionPreset {
             writer.write("$fileVersion="+EXPECTED_FILEVERSION+"\n");
             writer.write("$sourcePath="+engine.sourcePath+"\n");
             writer.write("$destinationPath="+engine.destinationPath+"\n");
-            writer.write("$folderTreeName="+String.join(",", engine.folderNameTree+"\n");
-            writer.write("$accepted_file_types="+String.join(",", FotoFusionApplication.photoExtensions+"\n");
+            writer.write("$folderTreeName="+String.join(",", engine.folderNameTree)+"\n");
+            writer.write("$accepted_file_types="+String.join(",", FotoFusionApplication.photoExtensions)+"\n");
             writer.write("#by Jakub Wawak all rights reserved");
             writer.close();
         }catch(Exception ex){

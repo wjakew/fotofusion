@@ -6,6 +6,12 @@ FotoFusion is a Java-based application designed to manage and manipulate photo c
 
 =======
 ## Changes:
+
+ff240524JWA
+1. Added graphical user interface (GUI) to the application.
+2. Added `gui` command to start the GUI.
+3. Added the ability to switch between console and GUI without losing the progress.
+
 ff230524JWA
 1. Added `help` command to show available commands in the console.
 2. Added saving the engine configuration to a file using the `save` command.
@@ -48,6 +54,12 @@ or
 ```bash
 ./fotofusion <filename>
 ```
+## GUI user guide
+
+To start GUI mode in application, type `gui` in the console. The GUI will open and you can use the buttons to interact with the application.
+Engine state is shared between console and GUI, so you can switch between them without losing the progress.
+
+![ff_sc2.png](./readme_resources/ff_sc2.png)
 
 ## Console UI Guide
 ## Available Commands
@@ -63,6 +75,8 @@ or
   Shows the history of the commands typed in the console.
 - `help`<br>
   Shows the available commands in the console.
+- `gui`<br>
+    Starts GUI.
 ### Commands for setting the engine
 - `setsource <source>`<br>
   Sets the source of the engine. The source can be a file or a directory.

@@ -7,6 +7,7 @@ package com.jakubwawak.fotofusionengine.terminalmenu;
 
 import com.jakubwawak.FotoFusionApplication;
 import com.jakubwawak.fotofusionengine.Engine;
+import com.jakubwawak.fotofusionengine.userinterface.FotoFusionGUIApp;
 import com.jakubwawak.maintanance.ConsoleColors;
 import com.jakubwawak.maintanance.FotoFusionPreset;
 
@@ -53,6 +54,10 @@ public class FotoFusionMenu {
             // contains exit - stopping the program
             FotoFusionApplication.log.saveLogToFile();
             runFlag = false;
+        }
+        else if ( keyWords.contains("gui")){
+            FotoFusionGUIApp app = new FotoFusionGUIApp();
+            app.run(new String[]{});
         }
         else if ( keyWords.contains("clear") ){
             System.out.print("\033[H\033[2J");

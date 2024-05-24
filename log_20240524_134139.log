@@ -1,0 +1,27 @@
+2024-05-24T13:40:55.364864758 - Running the app, log started!
+2024-05-24T13:40:55.403832807 - Loaded 2 properties from configuration file.
+2024-05-24T13:40:55.404211431 - Loaded properites file, date divider set to [-]6, accepted file types: jpg,png,jpeg,gif,bmp
+2024-05-24T13:41:16.311009854 - Source path set to: /home/jakubwawak/Downloads/testphotos
+PhotoCollection object created for path: /home/jakubwawak/Downloads/testphotos
+2024-05-24T13:41:16.311583487 - Path exists, creating collection
+2024-05-24T13:41:16.311667942 - Directory found: testphotos
+2024-05-24T13:41:16.312020073 - Photo added: _DSF2278.JPG
+2024-05-24T13:41:16.312085070 - Photo added: _DSF2299.JPG
+2024-05-24T13:41:16.312124862 - Photo added: _DSF2303.JPG
+2024-05-24T13:41:16.312154778 - Photo added: _DSF2865.JPG
+2024-05-24T13:41:16.312184748 - Photo added: 20180715_140105000_iOS.jpg
+2024-05-24T13:41:16.312212035 - Photo added: _DSF2315.JPG
+2024-05-24T13:41:16.312241120 - Photo collection stats:
+2024-05-24T13:41:16.312339365 - Photos in collection: 6
+2024-05-24T13:41:16.312405704 - Looped files: 6
+2024-05-24T13:41:16.312465984 - Looped folders: 2
+2024-05-24T13:41:16.339360149 - Loaded 145 tags from photo: _DSF2278.JPG
+2024-05-24T13:41:16.340026760 - Loaded 145 tags from photo: _DSF2299.JPG
+2024-05-24T13:41:16.340627118 - Loaded 145 tags from photo: _DSF2303.JPG
+2024-05-24T13:41:16.341183597 - Loaded 145 tags from photo: _DSF2865.JPG
+2024-05-24T13:41:16.369412805 - Loaded 58 tags from photo: 20180715_140105000_iOS.jpg
+2024-05-24T13:41:16.370253677 - Loaded 145 tags from photo: _DSF2315.JPG
+2024-05-24T13:41:16.371325824 - Loaded 151 tags from photo collection
+2024-05-24T13:41:16.373273087 - Loaded 151 tags from photo collection
+2024-05-24T13:41:27.521442335 - Destination path set to: /home/jakubwawak/Downloads/fotofusion
+2024-05-24T13:41:27.521755134 - Loaded 151 tags from photo collection

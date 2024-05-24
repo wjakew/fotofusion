@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane fx:id="panel_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jakubwawak.fotofusionengine.userinterface.MainGuiController">
+   <children>
+      <TextField id="field_source" fx:id="field_source" editable="false" layoutX="116.0" layoutY="28.0" prefHeight="26.0" prefWidth="729.0" />
+      <Label layoutX="14.0" layoutY="32.0" prefHeight="18.0" prefWidth="102.0" text="Source Path" />
+      <Label layoutX="14.0" layoutY="326.0" prefHeight="18.0" prefWidth="102.0" text="Selected Tags" />
+      <TextField id="field_destination" fx:id="field_destinaton" editable="false" layoutX="116.0" layoutY="71.0" prefHeight="26.0" prefWidth="729.0" />
+      <Button id="btn_setsource" fx:id="btn_setsource" layoutX="859.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleBtnSource" prefHeight="26.0" prefWidth="206.0" text="Set Source" />
+      <Button id="btn_setdestination" fx:id="btn_setdestination" layoutX="859.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleBtnDestination" prefHeight="26.0" prefWidth="206.0" text="Set Destination" />
+      <TextArea id="fld_stats" fx:id="fld_stats" editable="false" layoutX="16.0" layoutY="109.0" prefHeight="197.0" prefWidth="1050.0" />
+      <TextField id="field_tags" fx:id="field_tags" disable="true" editable="false" layoutX="108.0" layoutY="322.0" prefHeight="26.0" prefWidth="958.0" />
+      <Label alignment="CENTER" layoutX="16.0" layoutY="424.0" prefHeight="18.0" prefWidth="1050.0" text="Log" />
+      <Button id="btn_selecttags" fx:id="btn_selecttags" layoutX="859.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleBtnSelectTags" prefHeight="26.0" prefWidth="206.0" text="Select Tags" />
+      <ListView fx:id="list_log" layoutX="16.0" layoutY="442.0" prefHeight="337.0" prefWidth="1050.0" />
+      <Button fx:id="btn_runengine" layoutX="16.0" layoutY="388.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="1050.0" text="Run Engine" />
+      <ComboBox fx:id="cbb_tags" layoutX="16.0" layoutY="354.0" prefHeight="26.0" prefWidth="836.0" />
+   </children>
+</Pane>

@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class FotoFusionApplication {
 
     public static String version = "v1.1.0";
-    public static String build = "ff230524JWA";
+    public static String build = "ff240524JWA";
     public static FotoFusionLog log = new FotoFusionLog(true);;
     public static String[] photoExtensions = {};
     public static String dateDivider = "";
@@ -30,7 +30,7 @@ public class FotoFusionApplication {
     public static boolean debugFlag = false;
     public static Properties properties;
 
-    /**
+    /*
      * Main method of the application
      * @param args
      */

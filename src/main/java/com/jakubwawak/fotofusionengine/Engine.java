@@ -5,7 +5,6 @@
  */
 package com.jakubwawak.fotofusionengine;
 
-import com.drew.metadata.Tag;
 import com.jakubwawak.FotoFusionApplication;
 import com.jakubwawak.maintanance.FotoFusionPreset;
 
@@ -61,6 +60,20 @@ public class Engine {
             FotoFusionApplication.log.add("Given path is not directory or does not exists");
             return 0;
         }
+    }
+
+    /**
+     * Function for getting current values
+     * @return
+     */
+    public String getCurrentValues() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Source Path: ").append(sourcePath).append("\n");
+        sb.append("Destination Path: ").append(destinationPath).append("\n");
+        sb.append("Photo Collection size: "+collection.collection.size()).append("\n");
+        sb.append("Common tags size: ").append(collection.getCommonTags().size()).append("\n");
+        sb.append("Folder Name Tree: ").append(folderNameTree.toString()).append("\n");
+        return sb.toString();
     }
 
     /**
@@ -140,7 +153,7 @@ public class Engine {
             for(Photo photo : collection.collection){
                 photo.addBranch(tagName);
             }
-            FotoFusionApplication.log.add("Tag branch added to all photos");
+            FotoFusionApplication.log.add("Tag ("+tagName+")branch added to all photos");
         }
         else{
             FotoFusionApplication.log.add("Given tag name is not in common tags list");
@@ -157,7 +170,7 @@ public class Engine {
             for(Photo photo : collection.collection){
                 photo.removeBranch(tagName);
             }
-            FotoFusionApplication.log.add("Tag branch added to all photos");
+            FotoFusionApplication.log.add("Tag ("+tagName+")branch added to all photos");
         }
         else{
             FotoFusionApplication.log.add("Given tag name is not in common tags list");
