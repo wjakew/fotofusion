@@ -9,6 +9,7 @@ import com.jakubwawak.FotoFusionApplication;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
 import javafx.stage.DirectoryChooser;
 
 import java.io.File;
@@ -27,8 +28,6 @@ public class MainGuiController {
     @FXML
     private TextArea fld_stats;
 
-    @FXML TextField field_tags;
-
     @FXML
     private Button btn_setsource;
 
@@ -39,8 +38,22 @@ public class MainGuiController {
     private ComboBox<String> cbb_tags;
 
     @FXML
-    private Button btn_selecttags;
+    private ListView<String> list_tags;
 
+    @FXML
+    public void initialize() {
+        list_tags.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.DELETE) {
+                String selectedItem = list_tags.getSelectionModel().getSelectedItem();
+                if (selectedItem != null) {
+                    list_tags.getItems().remove(selectedItem);
+                    FotoFusionApplication.engine.removeTagBranch(selectedItem);
+                    loadTagList();
+                    loadLogElements();
+                }
+            }
+        });
+    }
 
     /**
      * Function for handling button source
@@ -60,7 +73,6 @@ public class MainGuiController {
                 FotoFusionApplication.engine.runCollectionGeneration();
                 FotoFusionApplication.engine.runPhotoExifLoader();
                 fld_stats.setText(FotoFusionApplication.engine.getCurrentValues());
-                loadTagElements();
             }
             else
                 field_source.setText("Invalid directory");
@@ -84,6 +96,7 @@ public class MainGuiController {
             if ( file.exists() && file.isDirectory() ) {
                 FotoFusionApplication.engine.setDestinationPath(selectedDirectory.getAbsolutePath());
                 fld_stats.setText(FotoFusionApplication.engine.getCurrentValues());
+                loadTagElements();
             }
             else
                 field_destinaton.setText("Invalid directory");
@@ -99,6 +112,7 @@ public class MainGuiController {
         for (String logElement : FotoFusionApplication.log.logCollection) {
             list_log.getItems().add(logElement);
         }
+        list_log.scrollTo(list_log.getItems().size() - 1);
     }
 
     /**
@@ -108,6 +122,16 @@ public class MainGuiController {
         cbb_tags.getItems().clear();
         for (String tag : FotoFusionApplication.engine.collection.getCommonTags()) {
             cbb_tags.getItems().add(tag);
+        }
+    }
+
+    /**
+     * Function for loading log elements to the list
+     */
+    public void loadTagList(){
+        list_tags.getItems().clear();
+        for (String tag : FotoFusionApplication.engine.folderNameTree) {
+            list_tags.getItems().add(tag);
         }
     }
 
@@ -122,13 +146,31 @@ public class MainGuiController {
         {
             if ( !FotoFusionApplication.engine.folderNameTree.contains(selectedTags)){
                 FotoFusionApplication.engine.addTagBranch(selectedTags);
-                field_tags.setText(FotoFusionApplication.engine.listFolderNameTree());
+                FotoFusionApplication.log.add("Current tag branch full: "+FotoFusionApplication.engine.listFolderNameTree());
             }
             else{
                 FotoFusionApplication.engine.removeTagBranch(selectedTags);
-                field_tags.setText(FotoFusionApplication.engine.listFolderNameTree());
+                FotoFusionApplication.log.add("Current tag branch full: "+FotoFusionApplication.engine.listFolderNameTree());
             }
         }
         loadLogElements();
+        loadTagList();
     }
+
+    /**
+     * Function for handling button run copy
+     * @param event
+     */
+    @FXML
+    private void handleBtnRunCopy(ActionEvent event) {
+        if ( FotoFusionApplication.engine.checkGoodToStart()){
+            FotoFusionApplication.engine.runPhotoCopy();
+            loadLogElements();
+        }
+        else{
+            FotoFusionApplication.log.add("Cannot run copy, check the source and destination path");
+            loadLogElements();
+        }
+    }
+
 }

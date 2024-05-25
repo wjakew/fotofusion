@@ -1,0 +1,7 @@
+#fotofusion properties file
+$fileVersion=1
+$sourcePath=/home/jakubwawak/Downloads/testphotos
+$destinationPath=/home/jakubwawak/Downloads/fotofusion
+$folderTreeName=Model,Date/Time
+$accepted_file_types=jpg,png,jpeg,gif,bmp
+#by Jakub Wawak all rights reserved

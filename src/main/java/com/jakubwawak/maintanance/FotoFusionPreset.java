@@ -20,7 +20,7 @@ public class FotoFusionPreset {
 
     String propertiesFileTitle = "fotofusion";
 
-    int INTEGRITY_CHECK_FLAG = 2;
+    int INTEGRITY_CHECK_FLAG = 4;
     String EXPECTED_FILEVERSION = "1";
 
     String propertiesFile;
@@ -39,7 +39,7 @@ public class FotoFusionPreset {
      * @param propertiesFile
      */
     public FotoFusionPreset(String propertiesFile){
-        this.propertiesFile = propertiesFile;
+        this.propertiesFile = propertiesFile + ".ffpreset";
         propertiesCollection = new ArrayList<>();
         error = false;
 

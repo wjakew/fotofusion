@@ -7,6 +7,10 @@ FotoFusion is a Java-based application designed to manage and manipulate photo c
 =======
 ## Changes:
 
+ff250524JWA
+1. GUI bug fixes.
+2. GUI UI changes.
+
 ff240524JWA
 1. Added graphical user interface (GUI) to the application.
 2. Added `gui` command to start the GUI.

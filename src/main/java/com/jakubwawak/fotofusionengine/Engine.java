@@ -33,14 +33,27 @@ public class Engine {
     }
 
     /**
+     * Function for checking if engine is ready to start
+     * @return
+     */
+    public boolean checkGoodToStart(){
+        if (sourcePath.isEmpty() || destinationPath.isEmpty() || collection == null || folderNameTree.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Constructor with preset object
      * @param preset
      */
     public Engine(FotoFusionPreset preset){
         this.sourcePath = "";
+
         folderNameTree = (ArrayList) Arrays.asList(preset.getValue("folderTreeName").split(","));
         setSourcePath(preset.getValue("source_path"));
         setDestinationPath(preset.getValue("destination_path"));
+        addTagBranchesFromTree();
         runCollectionGeneration();
         runPhotoExifLoader();
     }
@@ -153,12 +166,22 @@ public class Engine {
             for(Photo photo : collection.collection){
                 photo.addBranch(tagName);
             }
+            if (!folderNameTree.contains(tagName))
+                folderNameTree.add(tagName);
             FotoFusionApplication.log.add("Tag ("+tagName+")branch added to all photos");
         }
         else{
             FotoFusionApplication.log.add("Given tag name is not in common tags list");
         }
+    }
 
+    /**
+     * Function for adding tag branches from tree
+     */
+    public void addTagBranchesFromTree(){
+        for(String tag : folderNameTree){
+            addTagBranch(tag);
+        }
     }
 
     /**
@@ -170,7 +193,8 @@ public class Engine {
             for(Photo photo : collection.collection){
                 photo.removeBranch(tagName);
             }
-            FotoFusionApplication.log.add("Tag ("+tagName+")branch added to all photos");
+            folderNameTree.remove(tagName);
+            FotoFusionApplication.log.add("Tag ("+tagName+")branch removed from all photos");
         }
         else{
             FotoFusionApplication.log.add("Given tag name is not in common tags list");
