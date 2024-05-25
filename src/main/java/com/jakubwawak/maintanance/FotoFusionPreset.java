@@ -39,7 +39,7 @@ public class FotoFusionPreset {
      * @param propertiesFile
      */
     public FotoFusionPreset(String propertiesFile){
-        this.propertiesFile = propertiesFile + ".ffpreset";
+        this.propertiesFile = propertiesFile;
         propertiesCollection = new ArrayList<>();
         error = false;
 

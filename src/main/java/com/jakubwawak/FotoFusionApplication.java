@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class FotoFusionApplication {
 
     public static String version = "v1.1.0";
-    public static String build = "ff250524JWA";
+    public static String build = "ff250524JWA2";
     public static FotoFusionLog log = new FotoFusionLog(true);;
     public static String[] photoExtensions = {};
     public static String dateDivider = "";
@@ -66,15 +66,19 @@ public class FotoFusionApplication {
                 File file = new File(pathToPreset);
                 if (file.exists() && file.isFile() && file.getName().contains(".ffpreset")){
                     FotoFusionPreset ffp = new FotoFusionPreset(pathToPreset);
-                    ffp.parsePropertiesFile();
-                    //TODO error with loading preset
-                    engine = new Engine(ffp);
-                    Scanner sc = new Scanner(System.in);
-                    engine.runDummyPhotoCopy();
-                    System.out.print("type 'run' to start the engine: ");
-                    String ans = sc.nextLine();
-                    if ( ans.equals("run")){
-                        engine.runPhotoCopy();
+                    if( ffp.fileExists ){
+                        ffp.parsePropertiesFile();
+                        engine = new Engine(ffp);
+                        Scanner sc = new Scanner(System.in);
+                        engine.runDummyPhotoCopy();
+                        System.out.print("type 'run' to start the engine: ");
+                        String ans = sc.nextLine();
+                        if ( ans.equals("run")){
+                            engine.runPhotoCopy();
+                        }
+                    }
+                    else{
+                        log.add("Given file is not a proper preset file");
                     }
                 }
                 else{

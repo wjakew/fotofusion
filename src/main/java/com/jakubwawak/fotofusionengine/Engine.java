@@ -11,6 +11,7 @@ import com.jakubwawak.maintanance.FotoFusionPreset;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Class for running engine data
@@ -48,14 +49,19 @@ public class Engine {
      * @param preset
      */
     public Engine(FotoFusionPreset preset){
-        this.sourcePath = "";
+        List<String> temp = Arrays.asList(preset.getValue("$folderTreeName").split(","));
+        if (!temp.isEmpty()){
+            folderNameTree = new ArrayList<>(temp);
+            setSourcePath(preset.getValue("$sourcePath"));
+            setDestinationPath(preset.getValue("$destinationPath"));
+            runCollectionGeneration();
+            runPhotoExifLoader();
+            addTagBranchesFromTree();
+        }
+        else{
+            FotoFusionApplication.log.add("Failed to load preset data, folder tree name is empty");
+        }
 
-        folderNameTree = (ArrayList) Arrays.asList(preset.getValue("folderTreeName").split(","));
-        setSourcePath(preset.getValue("source_path"));
-        setDestinationPath(preset.getValue("destination_path"));
-        addTagBranchesFromTree();
-        runCollectionGeneration();
-        runPhotoExifLoader();
     }
 
     /**
